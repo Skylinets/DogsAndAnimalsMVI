@@ -15,36 +15,15 @@ import com.mascotas.dogs.model.Animal
 import kotlinx.coroutines.flow.consumeAsFlow
 
 @Composable
-fun Home(vm: MainViewModel,onBottomClick: () -> Unit){
+fun Home(vm: MainViewModel){
+    MainScreen(vm = vm)
 
-
-    Column(Modifier.fillMaxSize()) {
-       // Text(text = "Estas en Home")
-       // IdleScreen(onBottomClick)
-        /*val animal: Animal
-        AnimalsList(animals = animal)*/
-
-
-        val state = vm.state.value
-
-        when(state){
-            is MainState.idle -> IdleScreen(onBottomClick)
-            is MainState.Loading -> LoadingScreen()
-            is MainState.Animals -> AnimalsList(animals = state.animals)
-            is MainState.Error -> {
-                IdleScreen(onBottomClick)
-                Toast.makeText(LocalContext.current, state.error, Toast.LENGTH_LONG).show()
-            }
-            else -> {}
-        }
-
-
-    }
 }
 @Composable
-fun Person(){
+fun Person(vm: MainViewModel){
     Column(Modifier.background(color = Color.Green)) {
-        Text(text = "Estas en Person")
+        MainScreenDog(vm = vm)
+
     }
 }
 @Composable

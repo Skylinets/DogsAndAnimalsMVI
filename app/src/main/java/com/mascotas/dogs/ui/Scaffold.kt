@@ -20,7 +20,7 @@ import com.mascotas.dogs.model.*
 import kotlinx.coroutines.launch
 
 @Composable
-fun MyScaffold(vm: MainViewModel, onBottomClick: () -> Unit) {
+fun MyScaffold(vm: MainViewModel) {
     val scaffoldState = rememberScaffoldState()
     val couroutineScope = rememberCoroutineScope()
     val navController = rememberNavController()
@@ -46,8 +46,7 @@ fun MyScaffold(vm: MainViewModel, onBottomClick: () -> Unit) {
         drawerContent = { MyDrawer { couroutineScope.launch { scaffoldState.drawerState.close() } } })
     {
         Box(Modifier.padding(it)) {
-            NavigationHost(navController, onBottomClick, vm)
-           // MainScreen(vm, onBottomClick)
+            NavigationHost(navController, vm)
         }
     }
 

@@ -38,8 +38,7 @@ class MainActivity : FragmentActivity() {
             DogsTheme() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    //MainScreen(vm = mainViewModel, onBottomClick = onButtonClick)
-                    MyScaffold(vm = mainViewModel, onBottomClick = onButtonClick)
+                    MyScaffold(vm = mainViewModel)
                 }
             }
         }

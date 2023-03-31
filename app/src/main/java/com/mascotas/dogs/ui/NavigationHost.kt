@@ -8,14 +8,14 @@ import com.example.mvianimalscompose.view.MainViewModel
 import com.mascotas.dogs.model.*
 
 @Composable
-fun NavigationHost(navController: NavHostController, onBottomClick: () -> Unit, vm: MainViewModel) {
-    NavHost(navController = navController, startDestination = Pantalla1.route) {
+fun NavigationHost(navController: NavHostController, vm: MainViewModel) {
+    NavHost(navController = navController, startDestination = Pantalla2.route) {
         composable(Pantalla1.route) {
             //MainScreen(vm, onBottomClick)
-            Home(vm, onBottomClick)
+            Home(vm)
         }
         composable(Pantalla2.route) {
-            Person()
+            Person(vm)
         }
         composable(Pantalla3.route) {
             Favorite()
