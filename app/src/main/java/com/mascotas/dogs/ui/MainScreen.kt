@@ -22,8 +22,6 @@ import com.example.mvianimalscompose.view.MainViewModel
 import com.mascotas.dogs.MainState
 import com.mascotas.dogs.api.AnimalService
 import com.mascotas.dogs.model.Animal
-import com.mascotas.dogs.model.Dog
-import com.mascotas.dogs.view.DogsResponse
 
 @Composable
 fun MainScreen(vm: MainViewModel){
@@ -40,20 +38,6 @@ fun MainScreen(vm: MainViewModel){
 
 }
 
-@Composable
-fun MainScreenDog(vm: MainViewModel){
-    val state = vm.state.value
-
-    when(state){
-        is MainState.Loading -> LoadingScreen()
-        is MainState.Dogs-> DogsList(dogs = state.dogs)
-        is MainState.Error -> {
-            Toast.makeText(LocalContext.current, state.error, Toast.LENGTH_LONG).show()
-        }
-        else -> {}
-    }
-
-}
 
 @Composable
 fun IdleScreen(onButtonClick: () -> Unit){
@@ -102,32 +86,5 @@ fun AnimalItem(animal: Animal){
     }
 }
 
-@Composable
-fun DogsList(dogs: List<Dog>){
-    LazyColumn {
-        items(items = dogs){
-            DogItem(dog = it)
-            Divider(color = Color.LightGray, modifier = Modifier.padding(top = 4.dp, bottom = 4.dp))
-        }
-    }
-}
 
-@Composable
-fun DogItem(dog: Dog){
-    Row(modifier = Modifier
-        .fillMaxSize()
-        .height(100.dp)) {
-        val url = AnimalService.BASE_URL_DOGS + dog.image
-        val painter = rememberImagePainter(data = url)
-        Image(painter = painter,
-            contentDescription = null,
-            modifier = Modifier.size(100.dp),
-            contentScale = ContentScale.FillHeight)
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(start = 4.dp)) {
-            Text(text = dog.name, fontWeight = FontWeight.Bold)
-            //Text(text = animal.location)
-        }
-    }
-}
+

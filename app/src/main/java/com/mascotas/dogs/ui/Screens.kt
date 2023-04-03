@@ -22,7 +22,7 @@ fun Home(vm: MainViewModel){
 @Composable
 fun Person(vm: MainViewModel){
     Column(Modifier.background(color = Color.Green)) {
-        MainScreenDog(vm = vm)
+       Text(text = "Person Aqui")
 
     }
 }
