@@ -1,10 +1,8 @@
 package com.mascotas.dogs
 
 
-import com.mascotas.dogs.model.Animal
-import com.mascotas.dogs.model.Dog
-import com.mascotas.dogs.view.DogsResponse
-import retrofit2.Response
+import com.mascotas.dogs.data.model.Animal
+import com.mascotas.dogs.data.model.Dog
 
 sealed class MainState {
 

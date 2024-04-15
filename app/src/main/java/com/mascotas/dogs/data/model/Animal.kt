@@ -1,4 +1,4 @@
-package com.mascotas.dogs.model
+package com.mascotas.dogs.data.model
 
 class Animal(
     val name: String = "",

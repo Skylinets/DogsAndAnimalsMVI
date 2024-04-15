@@ -1,4 +1,4 @@
-package com.mascotas.dogs.view
+package com.mascotas.dogs.data.response
 
 import com.google.gson.annotations.SerializedName
 

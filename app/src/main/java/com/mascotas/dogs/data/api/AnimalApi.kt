@@ -1,7 +1,7 @@
-package com.mascotas.dogs.api
+package com.mascotas.dogs.data.api
 
 
-import com.mascotas.dogs.model.Animal
+import com.mascotas.dogs.data.model.Animal
 import retrofit2.http.GET
 
 interface AnimalApi {

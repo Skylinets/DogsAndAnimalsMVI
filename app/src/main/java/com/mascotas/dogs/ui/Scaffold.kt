@@ -16,11 +16,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.mvianimalscompose.view.MainViewModel
-import com.mascotas.dogs.model.*
+import com.mascotas.dogs.ui.navigation.Item_Menu
+import com.mascotas.dogs.ui.navigation.NavigationHost
+import com.mascotas.dogs.ui.navigation.Pantalla1
+import com.mascotas.dogs.ui.navigation.Pantalla2
+import com.mascotas.dogs.ui.navigation.Pantalla3
 import kotlinx.coroutines.launch
 
 @Composable
-fun MyScaffold(vm: MainViewModel) {
+fun MyScaffold(vm: MainViewModel, onButtonClick: () -> Unit) {
     val scaffoldState = rememberScaffoldState()
     val couroutineScope = rememberCoroutineScope()
     val navController = rememberNavController()
@@ -40,7 +44,7 @@ fun MyScaffold(vm: MainViewModel) {
         }, onClickMenu = { couroutineScope.launch { scaffoldState.drawerState.open() } })
     }, scaffoldState = scaffoldState,
         bottomBar = { MyBottomNavigation(navController, navigation_item) },
-        floatingActionButton = { MyFAB() },
+        floatingActionButton = { MyFAB(onButtonClick) },
         floatingActionButtonPosition = FabPosition.End,
         isFloatingActionButtonDocked = false,
         drawerContent = { MyDrawer { couroutineScope.launch { scaffoldState.drawerState.close() } } })
@@ -84,8 +88,8 @@ fun MyDrawer(onClickMenu: () -> Unit) {
 
 
 @Composable
-fun MyFAB() {
-    FloatingActionButton(onClick = { }, backgroundColor = Color.Red, contentColor = Color.White) {
+fun MyFAB(onButtonClick: () -> Unit) {
+    FloatingActionButton(onClick = { onButtonClick.invoke() }, backgroundColor = Color.Red, contentColor = Color.White) {
 
         Icon(imageVector = Icons.Filled.Phone, contentDescription = "Phone")
 

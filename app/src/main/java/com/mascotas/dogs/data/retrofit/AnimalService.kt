@@ -1,12 +1,13 @@
-package com.mascotas.dogs.api
+package com.mascotas.dogs.data.retrofit
 
+import com.mascotas.dogs.data.api.AnimalApi
+import com.mascotas.dogs.data.api.DogApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 object AnimalService {
     const val BASE_URL_ANIMAL = "https://raw.githubusercontent.com/CatalinStefan/animalApi/master/"
-    const val BASE_URL_DOGS = "https://dog.ceo/api/breeds/list/"
+    const val BASE_URL_DOGS = "https://dog.ceo/api/"
     private fun getRetrofit() = Retrofit.Builder()
         .baseUrl(BASE_URL_ANIMAL)
         .addConverterFactory(GsonConverterFactory.create())

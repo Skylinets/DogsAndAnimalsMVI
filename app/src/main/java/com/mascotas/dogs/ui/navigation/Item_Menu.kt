@@ -1,4 +1,4 @@
-package com.mascotas.dogs.model
+package com.mascotas.dogs.ui.navigation
 
 import com.mascotas.dogs.R
 

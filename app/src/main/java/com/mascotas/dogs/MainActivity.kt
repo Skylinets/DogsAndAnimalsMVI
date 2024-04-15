@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.mvianimalscompose.view.MainIntent
 import com.example.mvianimalscompose.view.MainViewModel
 import com.example.mvianimalscompose.view.ViewModelFactory
-import com.mascotas.dogs.api.AnimalService
+import com.mascotas.dogs.data.retrofit.AnimalService
 import com.mascotas.dogs.ui.MyScaffold
 import com.mascotas.dogs.ui.theme.DogsTheme
 import kotlinx.coroutines.launch
@@ -27,18 +27,24 @@ class MainActivity : FragmentActivity() {
             .of(this, ViewModelFactory(AnimalService.api))
             .get(MainViewModel::class.java)*/
 
-        mainViewModel = ViewModelProvider(this, ViewModelFactory(AnimalService.api)).get(MainViewModel::class.java)
+        mainViewModel =
+            ViewModelProvider(
+                this,
+                ViewModelFactory(
+                    AnimalService.api,
+                    AnimalService.apiDog
+                )
+            )[MainViewModel::class.java]
 
         val onButtonClick: () -> Unit = {
-            lifecycleScope.launch{
-                mainViewModel.userIntent.send(MainIntent.FetchAnimals)
+            lifecycleScope.launch {
+                mainViewModel.userIntent.send(MainIntent.FetchDogs)
             }
         }
         setContent {
             DogsTheme() {
-                // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    MyScaffold(vm = mainViewModel)
+                    MyScaffold(vm = mainViewModel, onButtonClick)
                 }
             }
         }
