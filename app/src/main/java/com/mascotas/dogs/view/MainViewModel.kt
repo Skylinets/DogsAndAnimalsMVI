@@ -57,7 +57,7 @@ class MainViewModel(
         }
     }
 
-    private fun fetchDogs(){
+    private fun fetchDogs() {
         viewModelScope.launch {
             _state.value = MainState.Loading
             try {
@@ -65,11 +65,12 @@ class MainViewModel(
                 if (breedListResponse.body()?.status == "success") {
                     val breeds = breedListResponse.body()?.images ?: emptyList()
                     val dogs = mutableListOf<Dog>()
-                    breeds.forEach { breed ->
+                    breeds.forEachIndexed { index, breed ->
                         val imageResponse = dogsRepo.getBreedRandomImage(breed)
                         if (imageResponse.isSuccessful) {
                             dogs.add(Dog(name = breed, image = imageResponse.body()?.image ?: ""))
                         }
+                        _state.value = MainState.LoadingProgress((index + 1).toFloat() / breeds.size)
                     }
                     _state.value = MainState.Dogs(dogs)
                 } else {
@@ -80,5 +81,4 @@ class MainViewModel(
             }
         }
     }
-
 }

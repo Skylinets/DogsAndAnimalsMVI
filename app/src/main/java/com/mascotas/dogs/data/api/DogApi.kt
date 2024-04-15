@@ -1,6 +1,5 @@
 package com.mascotas.dogs.data.api
 
-import com.google.gson.annotations.SerializedName
 import com.mascotas.dogs.data.response.DogsImageResponse
 import com.mascotas.dogs.data.response.DogsResponse
 import retrofit2.Response

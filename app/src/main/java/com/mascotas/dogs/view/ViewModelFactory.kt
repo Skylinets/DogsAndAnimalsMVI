@@ -2,9 +2,9 @@ package com.example.mvianimalscompose.view
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mascotas.dogs.data.api.AnimalApi
 import com.mascotas.dogs.data.AnimalRepo
 import com.mascotas.dogs.data.DogsRepo
+import com.mascotas.dogs.data.api.AnimalApi
 import com.mascotas.dogs.data.api.DogApi
 
 class ViewModelFactory(

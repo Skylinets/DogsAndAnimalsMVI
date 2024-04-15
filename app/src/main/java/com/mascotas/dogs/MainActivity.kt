@@ -3,7 +3,8 @@ package com.mascotas.dogs
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -22,10 +23,6 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        /*mainViewModel = ViewModelProvider
-            .of(this, ViewModelFactory(AnimalService.api))
-            .get(MainViewModel::class.java)*/
 
         mainViewModel =
             ViewModelProvider(
