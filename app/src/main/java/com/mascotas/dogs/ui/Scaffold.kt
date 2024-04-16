@@ -141,7 +141,7 @@ fun MyBottomNavigation(navController: NavHostController, items: List<Item_Menu>)
 fun MyToolbar(onClickIcon: (String) -> Unit, onClickMenu: () -> Unit) {
 
     TopAppBar(
-        title = { Text(text = "Mi primera Toolbar") },
+        title = { Text(text = "Toolbar") },
         backgroundColor = Color.Red,
         contentColor = Color.White,
         elevation = 15.dp,

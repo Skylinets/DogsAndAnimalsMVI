@@ -45,13 +45,13 @@ import com.mascotas.dogs.data.retrofit.AnimalService
 
 @Composable
 fun MainScreen(vm: MainViewModel) {
-    val state = vm.state.value
+    val state = vm.state.collectAsState()
 
-    when (state) {
+    when (val currentState = state.value) {
         is MainState.Loading -> LoadingScreen()
-        is MainState.Animals -> AnimalsList(animals = state.animals)
+        is MainState.Animals -> AnimalsList(animals = currentState.animals)
         is MainState.Error -> {
-            Toast.makeText(LocalContext.current, state.error, Toast.LENGTH_LONG).show()
+            Toast.makeText(LocalContext.current, currentState.error, Toast.LENGTH_LONG).show()
         }
 
         else -> {}

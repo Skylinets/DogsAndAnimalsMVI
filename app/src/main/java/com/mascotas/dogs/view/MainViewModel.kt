@@ -19,12 +19,12 @@ class MainViewModel(
 ): ViewModel() {
 
     val userIntent = Channel<MainIntent> (Channel.UNLIMITED)
-    private val _state = MutableStateFlow<MainState>(MainState.Loading)
+    private val _state = MutableStateFlow<MainState>(MainState.Idle)
     val state: StateFlow<MainState> = _state.asStateFlow()
 
     init {
         handleIntent()
-        sendIntent(MainIntent.FetchAnimals)
+        sendIntent(MainIntent.FetchDogs)
     }
 
     fun sendIntent(intent: MainIntent) {
@@ -69,8 +69,8 @@ class MainViewModel(
                         val imageResponse = dogsRepo.getBreedRandomImage(breed)
                         if (imageResponse.isSuccessful) {
                             dogs.add(Dog(name = breed, image = imageResponse.body()?.image ?: ""))
+                            _state.value = MainState.LoadingProgress((index + 1).toFloat() / breeds.size)
                         }
-                        _state.value = MainState.LoadingProgress((index + 1).toFloat() / breeds.size)
                     }
                     _state.value = MainState.Dogs(dogs)
                 } else {

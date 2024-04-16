@@ -35,7 +35,7 @@ class MainActivity : FragmentActivity() {
 
         val onButtonClick: () -> Unit = {
             lifecycleScope.launch {
-                mainViewModel.userIntent.send(MainIntent.FetchDogs)
+                mainViewModel.userIntent.send(MainIntent.FetchAnimals)
             }
         }
         setContent {

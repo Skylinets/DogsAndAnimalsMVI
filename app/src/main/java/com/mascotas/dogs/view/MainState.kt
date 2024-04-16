@@ -10,5 +10,5 @@ sealed class MainState {
     data class Dogs(val dogs: List<Dog>): MainState()
     data class Error(val error: String?): MainState()
     data class LoadingProgress(val progress: Float) : MainState()
-
+    object Idle : MainState()
 }
